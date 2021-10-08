@@ -1,0 +1,3 @@
+Variant number = 161
+Number of task = 7
+Number of function = 12
