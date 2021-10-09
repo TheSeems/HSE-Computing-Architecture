@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
+#include <ctime>
 
 #include "container/container.h"
 #include "utils/random/random.h"
@@ -22,7 +23,7 @@ void SendIncorrectQualifier() {
 }
 
 void SendIncorrectSize(int size) {
-  printf("Incorrect size provided: %d. Expected 0 < size <= %d\n", size, CONTAINER_MAX_SIZE);
+  printf("Incorrect size provided: %d. Expected incorrect_0 < size <= %d\n", size, CONTAINER_MAX_SIZE);
 }
 
 void ViaFile(container &container, const char *name) {
@@ -61,9 +62,12 @@ int main(int argc, char *argv[]) {
     SendIncorrectUsage();
     return 1;
   }
+
+  clock_t start, stop;
+  start = clock();
   printf("Start\n");
 
-  container container = {};
+  container container{};
   Init(container);
 
   if (!strcmp(argv[1], "-f")) {
@@ -77,6 +81,8 @@ int main(int argc, char *argv[]) {
 
   SortWithContainer(container, argv[3], argv[4]);
 
+  stop = clock();
   printf("Stop\n");
+  printf("Time elapsed %f s", double(stop - start) / CLOCKS_PER_SEC);
   return 0;
 }

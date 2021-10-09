@@ -6,13 +6,13 @@
 
 void In(feature &feature, FILE *file) {
   feature.title = ReadString(file);
-  feature.year = ReadInt(file);
+  feature.year = ReadIntIn(file, 1970, 3022, "Incorrect year provided: expected a number between 1970, 3022");
   feature.director = ReadString(file);
 }
 
 void inStochastic(feature &feature) {
   feature.title = RandomString(RandomInt(1, 51));
-  feature.year = RandomInt(1970, 2022);
+  feature.year = RandomInt(1970, 3022);
   feature.director = RandomString(RandomInt(1, 51));
 }
 

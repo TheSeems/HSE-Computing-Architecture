@@ -56,7 +56,7 @@ void Out(container &container, FILE *output) {
       Out(current.documentary, output);
     }
 
-    fprintf(output, "\n");
+    fprintf(output, ", sort_key = %f\n", YearOverTitleSymbols(current));
   }
 }
 
