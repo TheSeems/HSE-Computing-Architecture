@@ -9,7 +9,7 @@
 
 const int STRING_MAX_LENGTH = 128;
 
-int ReadInt(FILE *file);
+int ReadIntIn(FILE *file, int from, int to, const char* error);
 
 char *ReadString(FILE *file);
 

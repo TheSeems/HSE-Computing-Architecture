@@ -1,7 +1,0 @@
-Sorted container:
-1. Feature{title=hello,year=2023,director=newYear}
-2. Feature{title=hello,year=2022,director=newYear}
-3. Documentary{title=nature,year=2021,duration=300)
-4. Documentary{title=nature,year=2021,duration=1)
-5. Cartoon{title=holy_cricket,year=2021,type=DRAWING}
-6. Cartoon{title=newWorld,year=0,type=PUPPET}

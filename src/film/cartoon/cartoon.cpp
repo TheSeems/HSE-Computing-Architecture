@@ -47,7 +47,7 @@ enum cartoon::type Map(int typeNumber) {
 
 void In(cartoon &cartoon, FILE *file) {
   cartoon.title = ReadString(file);
-  cartoon.year = ReadInt(file);
+  cartoon.year = ReadIntIn(file, 1970, 3022, "Incorrect year provided: expected a number between 1970, 3022");
 
   // Тип мультфильма в соответствии с названием перечисления внутри
   // структуры cartoon (@link cartoon.h)
@@ -56,7 +56,7 @@ void In(cartoon &cartoon, FILE *file) {
 
 void inStochastic(cartoon &cartoon) {
   cartoon.title = RandomString(RandomInt(1, 51));
-  cartoon.year = RandomInt(1970, 2022);
+  cartoon.year = RandomInt(1970, 3022);
 
   // Тип мультфильма в соответствии с названием перечисления внутри
   // структуры cartoon (@link cartoon.h)
