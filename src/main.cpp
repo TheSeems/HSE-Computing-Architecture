@@ -26,33 +26,46 @@ void SendIncorrectSize(int size) {
   printf("Incorrect size provided: %d. Expected incorrect_0 < size <= %d\n", size, CONTAINER_MAX_SIZE);
 }
 
-void ViaFile(container &container, const char *name) {
+void ViaFile(Container &container, const char *name) {
   FILE *file = fopen(name, "rw");
-  In(container, file);
+  if (file == nullptr) {
+    printf("File '%s' was not found or is not either readable or writable", name);
+    exit(1);
+  }
+
+  container.In(file);
   fclose(file);
 }
 
-void ViaStochastic(container &container, const int size) {
+void ViaStochastic(Container &container, const int size) {
   if ((size < 1) || (size > 10000)) {
     SendIncorrectSize(size);
     exit(3);
   }
 
   Randomize();
-  InStochastic(container, size);
+  container.InStochastic(size);
 }
 
-void SortWithContainer(container &container, const char *input, const char *output) {
+void SortWithContainer(Container &container, const char *input, const char *output) {
   FILE *outFile1 = fopen(input, "w+");
-  fprintf(outFile1, "Input container:\n");
-  Out(container, outFile1);
-
   FILE *outFile2 = fopen(output, "w+");
-  Sort(container);
-  fprintf(outFile2, "Sorted container:\n");
-  Out(container, outFile2);
+  if (outFile1 == nullptr) {
+    printf("File '%s' was not found or is not writable", input);
+    exit(1);
+  }
+  if (outFile2 == nullptr) {
+    printf("File '%s' was not found or is not writable", output);
+    exit(1);
+  }
 
-  Clear(container);
+  fprintf(outFile1, "Input container:\n");
+  container.Out(outFile1);
+
+  container.Sort();
+  fprintf(outFile2, "Sorted container:\n");
+  container.Out(outFile2);
+
   fclose(outFile1);
   fclose(outFile2);
 }
@@ -65,11 +78,8 @@ int main(int argc, char *argv[]) {
 
   clock_t start, stop;
   start = clock();
-  printf("Start\n");
 
-  container container{};
-  Init(container);
-
+  Container container;
   if (!strcmp(argv[1], "-f")) {
     ViaFile(container, argv[2]);
   } else if (!strcmp(argv[1], "-n")) {
@@ -82,7 +92,6 @@ int main(int argc, char *argv[]) {
   SortWithContainer(container, argv[3], argv[4]);
 
   stop = clock();
-  printf("Stop\n");
   printf("Time elapsed %f s", double(stop - start) / CLOCKS_PER_SEC);
   return 0;
 }

@@ -1,7 +1,3 @@
-//
-// Created by me on 08.10.2021.
-//
-
 #ifndef COMPARCH_HOMEWORK_FIRST_CONTAINER_H
 #define COMPARCH_HOMEWORK_FIRST_CONTAINER_H
 
@@ -10,24 +6,24 @@
 // Максимальная длина массива для контейнера
 const int CONTAINER_MAX_SIZE = 10'000;
 
-struct container {
+class Container {
+private:
   // Текущий размер контейнера
-  int size;
-
+  int size{0};
   // Массив фильмов, содержащихся в контейрене
-  film *array;
+  Film* *array{new Film*[CONTAINER_MAX_SIZE]};
+
+public:
+  Container();
+  ~Container();
+  Film*& operator[](int);
+
+  void Clear();
+  void In(FILE *input);
+  void InStochastic(int size);
+
+  void Out(FILE *output);
+  void Sort();
 };
-
-void Init(container &c);
-
-void Clear(container &c);
-
-void In(container &c, FILE *input);
-
-void InStochastic(container &c, int size);
-
-void Out(container &c, FILE *output);
-
-void Sort(container &c);
 
 #endif //COMPARCH_HOMEWORK_FIRST_CONTAINER_H

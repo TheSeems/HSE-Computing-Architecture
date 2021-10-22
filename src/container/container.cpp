@@ -1,75 +1,62 @@
-//
-// Created by me on 08.10.2021.
-//
-
 #include <cstdlib>
 #include "container.h"
 
-void Init(container &container) {
-  container.array = new film[CONTAINER_MAX_SIZE];
-  container.size = 0;
+Container::Container() = default;
+
+Container::~Container() {
+  delete[] array;
 }
 
-void Clear(container &container) {
-  delete[] container.array;
-  Init(container);
+Film *&Container::operator[](int index) {
+  return array[index];
 }
 
-void In(container &container, FILE *input) {
+void Container::In(FILE *input) {
   while (!feof(input)) {
-    if (container.size >= CONTAINER_MAX_SIZE) {
+    if (size >= CONTAINER_MAX_SIZE) {
       printf("Out of container's capacity. Consider providing less amount entries.");
       exit(2);
     }
 
-    film film{};
-    In(film, input);
-
-    container.array[container.size++] = film;
+    array[size++] = Film::In(input);
   }
 }
 
-void InStochastic(container &container, int size) {
-  if (size > CONTAINER_MAX_SIZE) {
+void Container::InStochastic(int initialSize) {
+  if (initialSize <= 0) {
+    printf("Count of entries should be > 0");
+    exit(0);
+  }
+
+  if (initialSize > CONTAINER_MAX_SIZE) {
     printf("Out of container's capacity. Consider requesting less amount of random entries.");
     exit(2);
   }
 
-  for (int i = 0; i < size; i++) {
-    film film{};
-    inStochastic(film);
-
-    container.array[container.size++] = film;
+  for (int i = 0; i < initialSize; i++) {
+    array[size++] = Film::InStochastic();
   }
 }
 
-void Out(container &container, FILE *output) {
-  for (int i = 0; i < container.size; i++) {
+void Container::Out(FILE *output) {
+  for (int i = 0; i < size; i++) {
     fprintf(output, "%d. ", i + 1);
 
-    film current = container.array[i];
-    if (current.genre == film::FEATURE) {
-      Out(current.feature, output);
-    } else if (current.genre == film::CARTOON) {
-      Out(current.cartoon, output);
-    } else if (current.genre == film::DOCUMENTARY) {
-      Out(current.documentary, output);
-    }
-
-    fprintf(output, ", sort_key = %f\n", YearOverTitleSymbols(current));
+    array[i]->Out(output);
+    fprintf(output, ", sort_key = %f\n", array[i]->GetSortKey());
   }
 }
 
-void Sort(container &container) {
-  for (int i = 0; i < container.size; i++) {
-    for (int j = i; j < container.size; j++) {
-      double first = YearOverTitleSymbols(container.array[i]);
-      double second = YearOverTitleSymbols(container.array[j]);
+void Container::Sort() {
+  for (int i = 0; i < size; i++) {
+    for (int j = i; j < size; j++) {
+      double first = array[i]->GetSortKey();
+      double second = array[j]->GetSortKey();
 
       if (second > first) {
-        film temp = container.array[i];
-        container.array[i] = container.array[j];
-        container.array[j] = temp;
+        Film* temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
       }
     }
   }
