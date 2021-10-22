@@ -2,28 +2,25 @@
 #define COMPARCH_HOMEWORK_FIRST_CARTOON_H
 
 #include <cstdio>
+#include "../film.h"
 
-struct cartoon {
+class Cartoon : public virtual Film {
+public:
   // Способ создания мультика
   enum type {
     DRAWING, PUPPET, PLASTICINE
-  } type;
+  };
 
-  // Общие поля для всех жанров фильмов
-  char *title;
-  int year;
+  Cartoon(const char *title, int year, type type);
+
+  static Film* In(const char *title, int year, FILE *input);
+
+  static Film *InStochastic();
+
+  void Out(FILE *output) override;
+
+private:
+  type type;
 };
-
-/**
- * Функционал ввода/вывода данных о мультфильме
- */
-
-// Ввод из файла
-void In(cartoon &cartoon, FILE *input);
-// Ввод случайными значениями
-void inStochastic(cartoon &cartoon);
-
-// Вывод
-void Out(cartoon &cartoon, FILE *output);
 
 #endif //COMPARCH_HOMEWORK_FIRST_CARTOON_H

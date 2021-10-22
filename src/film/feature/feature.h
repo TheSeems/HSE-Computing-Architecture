@@ -2,26 +2,20 @@
 #define COMPARCH_HOMEWORK_FIRST_FEATURE_H
 
 #include <cstdio>
+#include "../film.h"
 
-struct feature {
+class Feature: virtual public Film {
+private:
   // Режисер игрового фильма
-  char *director;
+  const char *director;
+public:
+  Feature(const char *title, int year, const char *director);
 
-  // Общие поля для всех жанров фильмов
-  char *title;
-  int year;
+  static Film* In(const char *title, int year, FILE *input);
+
+  static Film* InStochastic();
+
+  void Out(FILE *output) override;
 };
-
-/**
- * Функционал ввода/вывода данных об игровом фильме
- */
-
-// Ввод из файла
-void In(feature &feature, FILE *input);
-// Ввод случайными значениями
-void inStochastic(feature &feature);
-
-// Вывод
-void Out(feature &feature, FILE *output);
 
 #endif //COMPARCH_HOMEWORK_FIRST_FEATURE_H

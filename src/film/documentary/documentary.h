@@ -2,26 +2,21 @@
 #define COMPARCH_HOMEWORK_FIRST_DOCUMENTARY_H
 
 #include <cstdio>
+#include "../film.h"
 
-struct documentary {
+class Documentary : virtual public Film {
+private:
   // Длительность документального фильма
   int duration;
 
-  // Общие поля для всех жанров фильмов
-  char *title;
-  int year;
+public:
+  Documentary(const char *title, int year, int duration);
+
+  static Film* In(const char *title, int year, FILE *input);
+
+  static Film *InStochastic();
+
+  void Out(FILE *output) override;
 };
-
-/**
- * Функционал ввода/вывода данных о мультфильме
- */
-
-// Ввод из файла
-void In(documentary &documentary, FILE *input);
-// Ввод случайными значениями
-void inStochastic(documentary &documentary);
-
-// Вывод
-void Out(documentary &documentary, FILE *output);
 
 #endif //COMPARCH_HOMEWORK_FIRST_DOCUMENTARY_H

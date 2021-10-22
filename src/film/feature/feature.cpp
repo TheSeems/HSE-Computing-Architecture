@@ -1,21 +1,21 @@
 #include "feature.h"
 #include "../../utils/io/io.h"
-
 #include "../../utils/random/random.h"
 #include <cstdio>
 
-void In(feature &feature, FILE *file) {
-  feature.title = ReadString(file);
-  feature.year = ReadIntIn(file, 1970, 3022, "Incorrect year provided: expected a number between 1970, 3022");
-  feature.director = ReadString(file);
+Film *Feature::In(const char *title, int year, FILE *input) {
+  return new Feature(title, year, ReadString(input));
 }
 
-void inStochastic(feature &feature) {
-  feature.title = RandomString(RandomInt(1, 51));
-  feature.year = RandomInt(1970, 3022);
-  feature.director = RandomString(RandomInt(1, 51));
+Film *Feature::InStochastic() {
+  return new Feature(
+      RandomString(RandomInt(1, 51)),
+      RandomInt(1970, 3022),
+      RandomString(RandomInt(1, 51)));
 }
 
-void Out(feature &feature, FILE *output) {
-  fprintf(output, "Feature{title=%s,year=%d,director=%s}", feature.title, feature.year, feature.director);
+Feature::Feature(const char *title, int year, const char *director) : Film(title, year), director(director) {}
+
+void Feature::Out(FILE *output) {
+  fprintf(output, "Feature{title=%s,year=%d,director=%s}", title, year, director);
 }

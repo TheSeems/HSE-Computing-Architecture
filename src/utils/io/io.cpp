@@ -5,6 +5,7 @@
 #include <cstring>
 #include <cstdlib>
 #include "io.h"
+#include "../../film/film.h"
 
 int ReadIntIn(FILE *file, int from, int to, const char* error) {
   int value;
