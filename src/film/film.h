@@ -5,8 +5,8 @@
 
 class Film {
 protected:
-  int year{};
-  const char *title{"untitled"};
+  int year;
+  const char *title;
 
 public:
   Film(const char *title, int year);
