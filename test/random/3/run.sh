@@ -1,3 +1,3 @@
 #!/bin/bash
-SOLUTION=./../cmake-build-debug/comparch_homework_second
-$SOLUTION -n 10000 random/3/output1.txt random/3/output2.txt
+SOLUTION="./src/main.py"
+$SOLUTION -n 10000 test/random/3/output1.txt test/random/3/output2.txt

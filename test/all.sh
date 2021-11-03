@@ -1,8 +1,10 @@
 #!/bin/bash
 
-SOLUTION=./../cmake-build-debug/comparch_homework_second
-DETERMINISTIC_FOLDER=deterministic
-RANDOM_FOLDER=random
+cd ../
+export PYTHONPATH=$PYTHONPATH:`pwd`
+SOLUTION="./src/main.py"
+DETERMINISTIC_FOLDER=test/deterministic
+RANDOM_FOLDER=test/random
 
 for test in 1 2 incorrect_0 incorrect_1 incorrect_2; do
   printf "===========\n"

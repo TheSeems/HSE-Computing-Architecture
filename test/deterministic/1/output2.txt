@@ -1,7 +1,7 @@
 Sorted container:
-1. Feature{title=hello,year=2022,director=newYear}, sort_key = 404.400000
-2. Feature{title=hello,year=2022,director=newYear}, sort_key = 404.400000
-3. Documentary{title=nature,year=2021,duration=300), sort_key = 336.833333
-4. Documentary{title=nature,year=2021,duration=45), sort_key = 336.833333
-5. Cartoon{title=newWorld,year=1970,type=PUPPET}, sort_key = 246.250000
-6. Cartoon{title=holy_cricket,year=2021,type=DRAWING}, sort_key = 168.416667
+1. Feature{title=hello,year=2022,director=newYear}, sort_key = 404.4
+2. Feature{title=hello,year=2022,director=newYear}, sort_key = 404.4
+3. Documentary{title=nature,year=2021,duration=300}, sort_key = 336.8333333333333
+4. Documentary{title=nature,year=2021,duration=45}, sort_key = 336.8333333333333
+5. Cartoon{title=newWorld,year=1970,genre=PUPPET}, sort_key = 246.25
+6. Cartoon{title=holy_cricket,year=2021,genre=DRAWING}, sort_key = 168.41666666666666

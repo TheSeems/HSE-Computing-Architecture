@@ -1,0 +1,46 @@
+===========
+DETERMINISTIC 1
+===========
+Time elapsed 0.0s
+
+
+===========
+DETERMINISTIC 2
+===========
+Time elapsed 0.0s
+
+
+===========
+DETERMINISTIC incorrect_0
+===========
+Error:  Unexpected EOF
+
+
+===========
+DETERMINISTIC incorrect_1
+===========
+Error:  Unexpected EOF
+
+
+===========
+DETERMINISTIC incorrect_2
+===========
+Error:  Incorrect value given: PLASTICINE expected to be part of CartoonGenre, given: bad
+
+
+===========
+RANDOM 1
+===========
+Time elapsed 1.515625s
+
+
+===========
+RANDOM 2
+===========
+Time elapsed 32.234375s
+
+
+===========
+RANDOM 3
+===========
+Time elapsed 140.1875s
