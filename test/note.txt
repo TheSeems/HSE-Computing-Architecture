@@ -25,22 +25,22 @@ Error:  Unexpected EOF
 ===========
 DETERMINISTIC incorrect_2
 ===========
-Error:  Incorrect value given: PLASTICINE expected to be part of CartoonGenre, given: bad
+Error:  Incorrect value given: Cartoon genre expected to be part of CartoonGenre, given: bad
 
 
 ===========
 RANDOM 1
 ===========
-Time elapsed 1.515625s
+Time elapsed 1.1875s
 
 
 ===========
 RANDOM 2
 ===========
-Time elapsed 32.234375s
+Time elapsed 31.78125s
 
 
 ===========
 RANDOM 3
 ===========
-Time elapsed 140.1875s
+Time elapsed 113.0s

@@ -39,11 +39,11 @@ def read_str(file, name=None, min_length=1, max_length=10 ** 3):
 
 
 def read_enum(file, cls, name=None):
-    name = "" if (name is None) else name
+    name = "Target" if (name is None) else name
     value = read_str(file, name)
-    for name, genre in cls.__members__.items():
-        if name == value:
-            return name
+    for key, genre in cls.__members__.items():
+        if key == value:
+            return key
     raise ValueError(F'Incorrect value given: {name} expected to be part of {cls.__name__}, given: {value}')
 
 
