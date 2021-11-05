@@ -1,7 +1,9 @@
+import random
+
 from src.film.cartoon.cartoon import Cartoon
 from src.film.documentary.documentary import Documentary
 from src.film.feature.feature import Feature
-from src.utils import io, rand
+from src.utils import io
 
 
 class Container:
@@ -38,7 +40,7 @@ class Container:
             raise ValueError("Count of entries should be > 0")
 
         for i in range(size):
-            film_type = rand.random_int(1, 3)
+            film_type = random.random_int(1, 3)
             if film_type == 1:
                 film = Feature()
             elif film_type == 2:
