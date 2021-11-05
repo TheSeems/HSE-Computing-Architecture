@@ -1,6 +1,3 @@
-import random
-
-
 def read_int_expect_eof(file, name=None, min_value=0, max_value=10 ** 9):
     name = "Target" if (name is None) else name
 

@@ -1,8 +1,10 @@
+import random
+
 from src.film.film import Film
 
 from enum import Enum
 
-from src.utils import io, rand
+from src.utils import io
 
 
 class CartoonGenre(Enum):
@@ -22,7 +24,7 @@ class Cartoon(Film):
 
     def fill_stochastic(self):
         super(Cartoon, self).fill_stochastic()
-        self.genre = rand.random_enum(CartoonGenre)
+        self.genre = random.choice(list(CartoonGenre))[0]
 
     def write_to_file(self, file):
         file.write('Cartoon{' + F'title={self.title},year={self.year},genre={self.genre}' + '}')

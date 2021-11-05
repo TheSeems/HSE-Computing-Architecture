@@ -1,3 +1,5 @@
+import random
+
 from src.film.film import Film
 from src.utils import io, rand
 
@@ -18,7 +20,7 @@ class Documentary(Film):
 
     def fill_stochastic(self):
         super(Documentary, self).fill_stochastic()
-        self.duration = rand.random_int(Documentary.min_duration, Documentary.max_duration)
+        self.duration = random.randint(Documentary.min_duration, Documentary.max_duration)
 
     def write_to_file(self, file):
         file.write('Documentary{' + F'title={self.title},year={self.year},duration={self.duration}' + '}')

@@ -1,3 +1,4 @@
+import random
 from abc import ABC, abstractmethod
 
 from src.utils import io, rand
@@ -12,24 +13,8 @@ class Film(ABC):
         self.title = "Untitled"
 
     @property
-    def year(self):
-        return self._year
-
-    @property
-    def title(self):
-        return self._title
-
-    @property
     def sort_key(self):
         return 1.0 * self.year / float(len(self.title))
-
-    @year.setter
-    def year(self, value):
-        self._year = value
-
-    @title.setter
-    def title(self, value):
-        self._title = value
 
     @abstractmethod
     def read_from_file(self, file):
@@ -39,8 +24,7 @@ class Film(ABC):
     @abstractmethod
     def fill_stochastic(self):
         self.title = rand.random_str()
-        self.year = rand.random_int(Film.min_year, Film.max_year)
-        pass
+        self.year = random.randint(Film.min_year, Film.max_year)
 
     @abstractmethod
     def write_to_file(self, file):
