@@ -1,9 +1,7 @@
-from enum import Enum
-
 from src.utils.file_wrapper import FileWrapper
 
 
-def read_int_expect_eof(file: FileWrapper, name: str = None, min_value:int = 0, max_value: int = 10 ** 9):
+def read_int_expect_eof(file: FileWrapper, name: str = None, min_value: int = 0, max_value: int = 10 ** 9):
     name = "Target" if (name is None) else name
 
     try:
@@ -38,5 +36,3 @@ def read_str(file: FileWrapper, name: str = None, min_length: int = 1, max_lengt
                          F' {name} expected to have length in range [{min_length};{max_length}], given: {value}')
 
     return value
-
-

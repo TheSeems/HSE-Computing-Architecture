@@ -26,8 +26,8 @@ class Cartoon(Film):
         for key, genre in [(meta.name, meta.value) for meta in CartoonGenre]:
             if key == value:
                 return key
-        raise ValueError(F'Incorrect value given: {name} expected to be part of {[meta.value for meta in CartoonGenre]},'
-                         F' given: {value}')
+        raise ValueError(F'Incorrect value given: {name} expected to be part of '
+                         F'{[meta.value for meta in CartoonGenre]}, given: {value}')
 
     def read_from_file(self, file: FileWrapper):
         super(Cartoon, self).read_from_file(file)
