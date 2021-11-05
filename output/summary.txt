@@ -31,16 +31,17 @@ Error:  Incorrect value given: Cartoon genre expected to be part of CartoonGenre
 ===========
 RANDOM 1
 ===========
-Time elapsed 1.1875s
+Time elapsed 0.625s
 
 
 ===========
 RANDOM 2
 ===========
-Time elapsed 31.78125s
+Time elapsed 17.78125s
 
 
 ===========
 RANDOM 3
 ===========
-Time elapsed 113.0s
+Time elapsed 101.96875s
+

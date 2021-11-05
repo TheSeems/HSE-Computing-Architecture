@@ -20,7 +20,7 @@ class Documentary(Film):
                                     Documentary.max_duration)
 
     def fill_stochastic(self):
-        super(Documentary, self).fill_stochastic()
+        super().fill_stochastic()
         self.duration = random.randint(Documentary.min_duration, Documentary.max_duration)
 
     def write_to_file(self, file):
