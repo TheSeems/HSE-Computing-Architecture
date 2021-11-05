@@ -3,7 +3,7 @@ import inspect
 import sys
 import time
 
-from src.container.container import Container
+from src.container import Container
 from src.utils.file_wrapper import FileWrapper
 
 
