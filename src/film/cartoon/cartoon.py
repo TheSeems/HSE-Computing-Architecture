@@ -1,10 +1,9 @@
 import random
 
-from src.film.film import Film
-
 from enum import Enum
 
 from src.utils import io
+from src.film.film import Film
 
 
 class CartoonGenre(Enum):

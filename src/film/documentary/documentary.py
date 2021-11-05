@@ -1,7 +1,7 @@
 import random
 
 from src.film.film import Film
-from src.utils import io, rand
+from src.utils import io
 
 
 class Documentary(Film):
