@@ -2,6 +2,7 @@
 import inspect
 import sys
 import time
+from typing import Union
 
 from src.container import Container
 from src.utils.file_wrapper import FileWrapper
@@ -29,12 +30,12 @@ def send_incorrect_qualifier():
         """))
 
 
-def via_file(my_container, file_name):
+def via_file(my_container: Container, file_name: str):
     with open(file_name, 'r') as file:
         my_container.read_from_file(FileWrapper(file))
 
 
-def via_stochastic(my_container, size):
+def via_stochastic(my_container: Container, size: Union[str, int]):
     try:
         size = int(size)
     except ValueError:

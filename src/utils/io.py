@@ -1,4 +1,9 @@
-def read_int_expect_eof(file, name=None, min_value=0, max_value=10 ** 9):
+from enum import Enum
+
+from src.utils.file_wrapper import FileWrapper
+
+
+def read_int_expect_eof(file: FileWrapper, name: str = None, min_value:int = 0, max_value: int = 10 ** 9):
     name = "Target" if (name is None) else name
 
     try:
@@ -13,14 +18,14 @@ def read_int_expect_eof(file, name=None, min_value=0, max_value=10 ** 9):
     return value
 
 
-def read_int(file, name=None, min_value=0, max_value=10 ** 9):
+def read_int(file: FileWrapper, name: str = None, min_value: int = 0, max_value: int = 10 ** 9):
     try:
         return read_int_expect_eof(file, name, min_value, max_value)
     except EOFError:
         raise ValueError("Unexpected EOF")
 
 
-def read_str(file, name=None, min_length=1, max_length=10 ** 3):
+def read_str(file: FileWrapper, name: str = None, min_length: int = 1, max_length: int = 10 ** 3):
     try:
         value = str(file.read())
     except EOFError:
@@ -33,14 +38,5 @@ def read_str(file, name=None, min_length=1, max_length=10 ** 3):
                          F' {name} expected to have length in range [{min_length};{max_length}], given: {value}')
 
     return value
-
-
-def read_enum(file, cls, name=None):
-    name = "Target" if (name is None) else name
-    value = read_str(file, name)
-    for key, genre in cls.__members__.items():
-        if key == value:
-            return key
-    raise ValueError(F'Incorrect value given: {name} expected to be part of {cls.__name__}, given: {value}')
 
 

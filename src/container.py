@@ -1,16 +1,18 @@
 import random
+from typing import IO
 
 from src.film.cartoon.cartoon import Cartoon
 from src.film.documentary.documentary import Documentary
 from src.film.feature.feature import Feature
 from src.utils import io
+from src.utils.file_wrapper import FileWrapper
 
 
 class Container:
     def __init__(self):
         self.array = []
 
-    def read_from_file(self, file):
+    def read_from_file(self, file: FileWrapper):
         while True:
             try:
                 if len(self.array) == 0:
@@ -35,12 +37,12 @@ class Container:
                 print("Error: ", str(e))
                 exit(1)
 
-    def read_stochastic(self, size):
+    def read_stochastic(self, size: int):
         if size <= 0:
             raise ValueError("Count of entries should be > 0")
 
         for i in range(size):
-            film_type = random.random_int(1, 3)
+            film_type = random.randint(1, 3)
             if film_type == 1:
                 film = Feature()
             elif film_type == 2:
@@ -52,7 +54,7 @@ class Container:
             film.fill_stochastic()
             self.array.append(film)
 
-    def write_to_file(self, file):
+    def write_to_file(self, file: IO):
         for i in range(len(self.array)):
             file.write(F'{i + 1}. ')
             self.array[i].write_to_file(file)

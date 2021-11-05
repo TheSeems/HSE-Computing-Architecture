@@ -1,6 +1,9 @@
+from typing import IO
+
+
 class FileWrapper:
     @staticmethod
-    def generate(file):
+    def generate(file: IO):
         word = ''
         while True:
             char = file.read(1)

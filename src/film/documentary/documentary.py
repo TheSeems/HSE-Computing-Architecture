@@ -2,6 +2,7 @@ import random
 
 from src.film.film import Film
 from src.utils import io
+from src.utils.file_wrapper import FileWrapper
 
 
 class Documentary(Film):
@@ -12,11 +13,11 @@ class Documentary(Film):
         super().__init__()
         self.duration = Documentary.min_duration
 
-    def read_from_file(self, file):
+    def read_from_file(self, file: FileWrapper):
         super(Documentary, self).read_from_file(file)
         self.duration = io.read_int(file, "Documentary duration",
-                                       Documentary.min_duration,
-                                       Documentary.max_duration)
+                                    Documentary.min_duration,
+                                    Documentary.max_duration)
 
     def fill_stochastic(self):
         super(Documentary, self).fill_stochastic()
