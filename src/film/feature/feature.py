@@ -6,9 +6,6 @@ from src.utils.file_wrapper import FileWrapper
 
 
 class Feature(Film):
-    min_duration = 10
-    max_duration = 3600
-
     def __init__(self):
         super().__init__()
         self.director = "Unknown director"
