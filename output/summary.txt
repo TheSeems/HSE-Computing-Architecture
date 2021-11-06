@@ -25,7 +25,7 @@ Error:  Unexpected EOF
 ===========
 DETERMINISTIC incorrect_2
 ===========
-Error:  Incorrect value given: Cartoon genre expected to be part of CartoonGenre, given: bad
+Error:  Incorrect value given: Cartoon genre expected to be part of ['DRAWING', 'PUPPET', 'PLASTICINE'], given: bad
 
 
 ===========
