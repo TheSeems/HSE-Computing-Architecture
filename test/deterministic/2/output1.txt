@@ -1,0 +1,9 @@
+Input container:
+1. Feature{title=hello,year=2022,director=newYear}, sort_key = 404.44
+2. Cartoon{title=holy_cricket,year=2021,type=DRAWING}, sort_key = 168.46
+3. Feature{title=abcdefghijklmnopqrstuvwxyz,year=2022,director=veryBigTitle}, sort_key = 77.81
+4. Documentary{title=nature,year=2021,duration=300}, sort_key = 336.88
+5. Feature{title=hello,year=2023,director=newYear}, sort_key = 404.65
+6. Cartoon{title=newWorld,year=1970,type=PUPPET}, sort_key = 246.30
+7. Documentary{title=nature,year=2021,duration=569}, sort_key = 336.88
+569), sort_key = 336.833333
